@@ -1,0 +1,23 @@
+#!/bin/expect
+
+set proceed "yes"
+set username "binfex"
+set password "binfex"
+
+spawn  sh bootstrap-yum.sh
+
+expect "If you want to proceed"
+
+send -- "$proceed\r"
+
+set timeout -1
+
+expect "Enter database username"
+
+send -- "$username\r"
+
+expect "Enter database password"
+
+send -- "$password\r"
+
+expect eof

@@ -1,0 +1,13 @@
+#!/bin/expect
+
+set value "yes"
+
+match_max 1000
+
+spawn sudo PYTHONPATH=/opt/graphite/webapp/ django-admin.py collectstatic --settings=graphite.settings
+
+expect "continue"
+send -- "$value\r"
+#send -- "\r"
+
+expect eof
